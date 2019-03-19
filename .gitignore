@@ -1,0 +1,4 @@
+dist/**/*
+rust/**/pkg
+node_modules
+.serverless

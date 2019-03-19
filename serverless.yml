@@ -1,0 +1,47 @@
+service:
+    name: hello-world
+
+custom:
+  defaultStage: staging
+  deployVars: ${file(./config/deploy.${self:provider.stage}.yml)}
+
+provider:
+  name: cloudflare
+  stage: ${opt:stage, self:custom.defaultStage}
+  config:
+    accountId: ${self:custom.deployVars.ACCOUNT_ID}
+    zoneId: ${self:custom.deployVars.ZONE_ID}
+
+plugins:
+  - serverless-cloudflare-workers
+
+functions:
+  hello:
+    name: ${self:provider.stage}-demo-hello
+    script: helloWorld
+    
+    events:
+      - http:
+          url: ${self:custom.deployVars.host}/hello/*
+          method: GET
+
+    environment:
+      IMPORTANT_KEY: "MY IMPORTANT KEY"
+
+    resources:
+      kv:
+        - variable: storage
+          namespace: DEMO_NS
+
+      wasm:
+        - variable: message_generator
+          file: rust/aorb/pkg/aorb_bg.wasm
+          
+  foo:
+    name: ${self:provider.stage}-demo-foo
+    script: bar
+    events:
+      - http:
+          url: ${self:custom.deployVars.host}/foo/*
+          method: GET
+          

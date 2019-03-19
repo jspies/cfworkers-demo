@@ -1,0 +1,18 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "Cloudflare serverless deployment for enterprise customers",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_OPTIONS='--experimental-modules' mocha --delay test/test.js"
+  },
+  "author": "cloudflare",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^6.0.2",
+    "serverless-cloudflare-workers": "1.1.0"
+  },
+  "dependencies": {
+    "serverless": "^1.39.1"
+  }
+}
