@@ -4,7 +4,7 @@
   "description": "Cloudflare serverless deployment for enterprise customers",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_OPTIONS='--experimental-modules' mocha --delay test/test.js"
+    "test": "NODE_OPTIONS='--experimental-modules' mocha --delay test/tests.js"
   },
   "author": "cloudflare",
   "license": "MIT",

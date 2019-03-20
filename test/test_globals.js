@@ -8,7 +8,7 @@ const fetch = require('node-fetch');
  *
  * And then fetchStub.restore() at the end of your tests.
  */
-global.accesskv = {
+global.storage = {
   put: function() {
     return new Promise(resolve => {
       resolve();
@@ -16,43 +16,7 @@ global.accesskv = {
   },
   get: function() {
     return new Promise(resolve => {
-      resolve();
-    });
-  },
-  delete: function() {
-    return new Promise(resolve => {
-      resolve();
-    });
-  }
-};
-
-global.accesstokens = {
-  put: function() {
-    return new Promise(resolve => {
-      resolve();
-    });
-  },
-  get: function() {
-    return new Promise(resolve => {
-      resolve();
-    });
-  },
-  delete: function() {
-    return new Promise(resolve => {
-      resolve();
-    });
-  }
-};
-
-global.accesskeys = {
-  put: function() {
-    return new Promise(resolve => {
-      resolve();
-    });
-  },
-  get: function() {
-    return new Promise(resolve => {
-      resolve();
+      resolve(["Jonathan"]);
     });
   },
   delete: function() {
@@ -63,7 +27,7 @@ global.accesskeys = {
 };
 
 global.event = {
-  request: { url: 'https://test.accessonworkers.com' },
+  request: { url: 'https://demo.cfworkers.com/hello' },
   waitUntil: () => {}
 };
 

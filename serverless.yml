@@ -19,7 +19,7 @@ functions:
   hello:
     name: ${self:provider.stage}-demo-hello
     script: helloWorld
-    
+    webpack: true
     events:
       - http:
           url: ${self:custom.deployVars.host}/hello/*
